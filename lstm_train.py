@@ -37,7 +37,7 @@ class LSTMNER:
                          'DISEASE-B': 10
                         }
         self.EMBEDDING_DIM = 300
-        self.EPOCHS = 20
+        self.EPOCHS = 5
         self.BATCH_SIZE = 128
         self.NUM_CLASSES = len(self.class_dict)
         self.VOCAB_SIZE = len(self.word_dict)
@@ -132,7 +132,7 @@ class LSTMNER:
     def train_model(self):
         x_train, y_train = self.modify_data()
         model = self.tokenvec_bilstm2_crf_model()
-        history = model.fit(x_train[:], y_train[:], batch_size=self.BATCH_SIZE, epochs=self.EPOCHS)
+        history = model.fit(x_train[:], y_train[:], validation_split=0.2, batch_size=self.BATCH_SIZE, epochs=self.EPOCHS)
         self.draw_train(history)
         model.save(self.model_path)
         return model
@@ -154,6 +154,13 @@ class LSTMNER:
         plt.legend(['Train'], loc='upper left')
         plt.show()
         # 7836/7836 [==============================] - 205s 26ms/step - loss: 17.1782 - acc: 0.9624
+        '''
+        6268/6268 [==============================] - 145s 23ms/step - loss: 18.5272 - acc: 0.7196 - val_loss: 15.7497 - val_acc: 0.8109
+        6268/6268 [==============================] - 142s 23ms/step - loss: 17.8446 - acc: 0.9099 - val_loss: 15.5915 - val_acc: 0.8378
+        6268/6268 [==============================] - 136s 22ms/step - loss: 17.7280 - acc: 0.9485 - val_loss: 15.5570 - val_acc: 0.8364
+        6268/6268 [==============================] - 133s 21ms/step - loss: 17.6918 - acc: 0.9593 - val_loss: 15.5187 - val_acc: 0.8451
+        6268/6268 [==============================] - 144s 23ms/step - loss: 17.6723 - acc: 0.9649 - val_loss: 15.4944 - val_acc: 0.8451
+        '''
 
 if __name__ == '__main__':
     ner = LSTMNER()
