@@ -106,7 +106,7 @@ CCKS2018的电子病历命名实体识别的评测任务，是对于给定的一
 
 
 四,模型搭建
-   本模型使用预训练字向量,作为embedding层输入,然后经过两个双向LSTM层进行编码,编码后加入dense层,嘴周送入CRF层进行序列标注.
+   本模型使用预训练字向量,作为embedding层输入,然后经过两个双向LSTM层进行编码,编码后加入dense层,最后送入CRF层进行序列标注.
 
        '''使用预训练向量进行模型训练'''
     def tokenvec_bilstm2_crf_model(self):
@@ -140,10 +140,10 @@ CCKS2018的电子病历命名实体识别的评测任务，是对于给定的一
 
 
 
-any question? 请联系我:
-邮箱:lhy_in_blcu@126.com
-csdn:https://blog.csdn.net/lhy2014
-我的自然语言处理项目: https://liuhuanyong.github.io/
+any question? 请联系我:  
+邮箱:lhy_in_blcu@126.com  
+csdn:https://blog.csdn.net/lhy2014  
+我的自然语言处理项目: https://liuhuanyong.github.io/  
 
 
 
